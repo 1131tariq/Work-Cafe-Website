@@ -1,0 +1,105 @@
+{% include "header.html" %}
+<!---->
+<div class="row">
+    <div class="col-4">
+        <h1 style="padding-left: 10px">LONDON</h1>
+        <p style="padding-left: 10px">The best work and study-friendly cafes, restaurants, and hotel lobbies in London. Find venues with free and
+            reliable Wi-Fi hotspots, ample power sockets, and comfy seating areas.</p>
+        <div class="list-group" id="list-tab" role="tablist">
+            {% for cafe in cafes: %}
+            {% if cafes.index(cafe) == 0: %}
+            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
+               href="#list-{{cafe.id}}" role="tab" aria-controls="home">
+                <div class="row align-items-end">
+                    <div class="col-4">
+                        <img style="max-height: 5rem" src="{{cafe.image}}">
+                    </div>
+                    <div class="col-6">
+                        <h6>{{cafe.name}}</h6>
+                        <p>{{cafe.loc}}</p>
+                    </div>
+                    <div class="col-2" style="text-align: center">
+                        <p>{{cafe.score}}% Work Friendly</p>
+                    </div>
+                </div>
+            </a>
+            {% else: %}
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+               href="#list-{{cafe.id}}" role="tab" aria-controls="profile">
+                <div class="row align-items-end">
+                    <div class="col-4">
+                        <img style="max-height: 5rem" src="{{cafe.image}}">
+                    </div>
+                    <div class="col-6">
+                        <h6>{{cafe.name}}</h6>
+                        <p>{{cafe.loc}}</p>
+                    </div>
+                    <div class="col-2" style="text-align: center">
+                        <p>{{cafe.score}}% Work Friendly</p>
+                    </div>
+                </div>
+            </a>
+            {%endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+            {% for cafe in cafes: %}
+            {% if cafes.index(cafe) == 0: %}
+            <div class="tab-pane fade show active" id="list-{{cafe.id}}" role="tabpanel"
+                 aria-labelledby="list-home-list">
+                <img width="100%" style="max-height:20rem" src="{{cafe.image}}">
+                <h2>{{cafe.name}}</h2>
+                <p>{{cafe.loc}}</p>
+                <p>Opening Times: {{cafe.opening_time}} - {{cafe.closing_time}}</p>
+                <a href="{{cafe.map}}">Directions</a>
+                <br>
+                <br>
+                <h5>Socket Availability</h5>
+                <p>{{cafe.sockets}}</p>
+                <h5>Wifi Strength</h5>
+                <p>{{cafe.wifi}}</p>
+                <h5>Toilet Cleanliness</h5>
+                <p>{{cafe.toilets}}</p>
+                <h5>Can take calls</h5>
+                <p>{{cafe.calls}}</p>
+                <h5>Number of Seats</h5>
+                <p>{{cafe.seat}}</p>
+                <h5>Coffee Price</h5>
+                <p>{{cafe.price}}</p>
+            </div>
+            {% else: %}
+            <div class="tab-pane fade" id="list-{{cafe.id}}" role="tabpanel"
+                 aria-labelledby="list-profile-list">
+                <img width="100%" style="max-height:20rem" src="{{cafe.image}}">
+                <h2>{{cafe.name}}</h2>
+                <p>{{cafe.loc}}</p>
+                <p>Opening Times: {{cafe.opening_time}} - {{cafe.closing_time}}</p>
+                <a href="{{cafe.map}}">Directions</a>
+                <br>
+                <br>
+                <h5>Socket Availability</h5>
+                <p>{{cafe.sockets}}</p>
+                <h5>Wifi Strength</h5>
+                <p>{{cafe.wifi}}</p>
+                <h5>Toilet Cleanliness</h5>
+                <p>{{cafe.toilets}}</p>
+                <h5>Can take calls</h5>
+                <p>{{cafe.calls}}</p>
+                <h5>Number of Seats</h5>
+                <p>{{cafe.seat}}</p>
+                <h5>Coffee Price</h5>
+                <p>{{cafe.price}}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+<!---->
+{% include "footer.html" %}
